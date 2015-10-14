@@ -12,7 +12,7 @@ BUILD_DIR=ARGV[0]
 ENV_DIR=ARGV[2]
 
 puts "-----> Found an .oracle.yml"
-
+puts "Build dir:#{BUILD_DIR}"
 ORACLE_CONFIG = YAML.load_file("#{BUILD_DIR}/.oracle.yml")
 
 ORACLE_INSTANT_CLIENT_DIR="vendor/oracle_instantclient"
