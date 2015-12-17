@@ -24,6 +24,8 @@ ORACLE_INSTANT_CLIENT_FILENAME=ORACLE_INSTANT_CLIENT_URL.split(/\//).last
 indent "Making directory #{BUILD_DIR}/#{ORACLE_INSTANT_CLIENT_DIR}"
 `mkdir -p #{BUILD_DIR}/#{ORACLE_INSTANT_CLIENT_DIR}`
 
+puts `rpm -ivh oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm`
+
 indent "Downloading and extracting #{ORACLE_INSTANT_CLIENT_FILENAME}"
 result = `curl #{ORACLE_INSTANT_CLIENT_URL} -L -s -o - | tar -xvz -C #{BUILD_DIR}/#{ORACLE_INSTANT_CLIENT_DIR} -f - `
 
