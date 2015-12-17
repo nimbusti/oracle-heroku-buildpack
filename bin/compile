@@ -8,7 +8,8 @@ def indent(msg)
   puts "       #{msg}"
 end
 
-BUILD_DIR=ARGV[0]
+#BUILD_DIR=ARGV[0]
+
 ENV_DIR=ARGV[2]
 
 puts "-----> Found an .oracle.yml"
@@ -16,6 +17,8 @@ puts "#{ARGV[0]}"
 puts "#{ARGV[2]}"
 
 ORACLE_CONFIG = YAML.load_file("#{BUILD_DIR}/.oracle.yml")
+
+BUILD_DIR="/app"
 
 ORACLE_INSTANT_CLIENT_DIR="oracle/instantclient"
 ORACLE_INSTANT_CLIENT_URL="https://www.dropbox.com/s/ro5rfqwgtjdo75b/oracle-instantclient-full-12.1-linux.x64.tar.gz"
@@ -57,7 +60,7 @@ indent "Create profile.d script"
 `mkdir -p #{BUILD_DIR}/.profile.d`
 
 open("#{BUILD_DIR}/.profile.d/oracle.sh", "w") do |f|
-  ORACLE_HOME = "/app/#{ORACLE_INSTANT_CLIENT_DIR}"
+  ORACLE_HOME = "#{BUILD_DIR}/#{ORACLE_INSTANT_CLIENT_DIR}"
   f.puts "export ORACLE_HOME=#{ORACLE_HOME}"
   f.puts "export LD_LIBRARY_PATH=#{ORACLE_HOME}:$LD_LIBRARY_PATH"
   f.puts "export PATH=#{ORACLE_HOME}:$PATH"
