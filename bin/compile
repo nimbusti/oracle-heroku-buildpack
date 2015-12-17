@@ -63,7 +63,7 @@ open("#{BUILD_DIR}/.profile.d/oracle.sh", "w") do |f|
 end
 
 puts "#{ORACLE_HOME}"
-`pwd`
+puts `pwd`
 
 indent "Save build LD_LIBRARY_PATH to ENV_DIR"
 
