@@ -8,7 +8,8 @@ def indent(msg)
   puts "       #{msg}"
 end
 
-BUILD_DIR=ARGV[0]
+#BUILD_DIR=ARGV[0]
+BUILD_DIR="/app"
 
 ENV_DIR=ARGV[2]
 
@@ -18,7 +19,7 @@ puts "#{ARGV[2]}"
 
 ORACLE_CONFIG = YAML.load_file("#{BUILD_DIR}/.oracle.yml")
 
-ORACLE_INSTANT_CLIENT_DIR="vendor/oracle_instantclient"
+ORACLE_INSTANT_CLIENT_DIR="oracle/instantclient"
 ORACLE_INSTANT_CLIENT_URL="https://www.dropbox.com/s/ro5rfqwgtjdo75b/oracle-instantclient-full-12.1-linux.x64.tar.gz"
 ORACLE_INSTANT_CLIENT_FILENAME=ORACLE_INSTANT_CLIENT_URL.split(/\//).last
 
