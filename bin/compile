@@ -86,6 +86,6 @@ indent "LD LIBRARY Directory"
 puts `ls -la #{existing_ld_library_path}`
 
 indent "ORACLE HOME Directory"
-puts `ls -la #{ORACLE HOME}`
+puts `ls -la #{ORACLE_HOME}`
 
 indent "Done!"
