@@ -80,6 +80,6 @@ open(File.join(ENV_DIR,'LD_LIBRARY_PATH'), 'w') do |f|
   puts value
 end
 
-puts `ls -la #{ORACLE_HOME}`
+puts `ls -la #{existing_ld_library_path}`
 
 indent "Done!"
