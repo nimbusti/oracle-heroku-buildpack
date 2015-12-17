@@ -24,8 +24,6 @@ ORACLE_INSTANT_CLIENT_FILENAME=ORACLE_INSTANT_CLIENT_URL.split(/\//).last
 indent "Making directory #{BUILD_DIR}/#{ORACLE_INSTANT_CLIENT_DIR}"
 `mkdir -p #{BUILD_DIR}/#{ORACLE_INSTANT_CLIENT_DIR}`
 
-puts `rpm -ivh oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm`
-
 indent "Downloading and extracting #{ORACLE_INSTANT_CLIENT_FILENAME}"
 result = `curl #{ORACLE_INSTANT_CLIENT_URL} -L -s -o - | tar -xvz -C #{BUILD_DIR}/#{ORACLE_INSTANT_CLIENT_DIR} -f - `
 
@@ -59,7 +57,7 @@ indent "Create profile.d script"
 `mkdir -p #{BUILD_DIR}/.profile.d`
 
 open("#{BUILD_DIR}/.profile.d/oracle.sh", "w") do |f|
-  ORACLE_HOME = "/opt/#{ORACLE_INSTANT_CLIENT_DIR}"
+  ORACLE_HOME = "/app/#{ORACLE_INSTANT_CLIENT_DIR}"
   f.puts "export ORACLE_HOME=#{ORACLE_HOME}"
   f.puts "export LD_LIBRARY_PATH=#{ORACLE_HOME}:$LD_LIBRARY_PATH"
   f.puts "export PATH=#{ORACLE_HOME}:$PATH"
@@ -67,7 +65,6 @@ open("#{BUILD_DIR}/.profile.d/oracle.sh", "w") do |f|
 end
 
 puts "#{ORACLE_HOME}"
-puts `mkdir -p #{ORACLE_HOME}`
 
 indent "Save build LD_LIBRARY_PATH to ENV_DIR"
 
@@ -85,6 +82,10 @@ open(File.join(ENV_DIR,'LD_LIBRARY_PATH'), 'w') do |f|
   puts value
 end
 
+indent "LD LIBRARY Directory"
 puts `ls -la #{existing_ld_library_path}`
+
+indent "ORACLE HOME Directory"
+puts `ls -la #{ORACLE HOME}`
 
 indent "Done!"
