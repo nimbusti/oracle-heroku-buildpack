@@ -63,7 +63,6 @@ open("#{BUILD_DIR}/.profile.d/oracle.sh", "w") do |f|
 end
 
 puts "#{ORACLE_HOME}"
-puts `ls -la #{ORACLE_HOME}`
 
 indent "Save build LD_LIBRARY_PATH to ENV_DIR"
 
@@ -77,5 +76,7 @@ open(File.join(ENV_DIR,'LD_LIBRARY_PATH'), 'w') do |f|
   end
   f.puts value
 end
+
+puts `ls -la #{ORACLE_HOME}`
 
 indent "Done!"
